@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 01:18:48 by orekabe           #+#    #+#             */
-/*   Updated: 2021/11/30 17:40:26 by orekabe          ###   ########.fr       */
+/*   Updated: 2021/12/28 19:22:58 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,8 @@
 
 static	char	**free_split(char **ptr)
 {
-	int	i;
-
-	if (!ptr)
-	{
-		i = 0;
-		while (ptr[i])
-			free (ptr[i]);
-		free(ptr);
-	}
+	free (ptr);
+	ptr = NULL;
 	return (ptr);
 }
 
@@ -53,7 +46,11 @@ static	char	*ft_allocate(char const *s, char c)
 		i++;
 	ptr = malloc(i + 1);
 	if (!ptr)
-		return (NULL);
+	{
+		free (ptr);
+		ptr = NULL;
+		return (ptr);
+	}
 	j = 0;
 	while (j < i)
 	{
@@ -76,7 +73,7 @@ static	char	**ft_split_beta(char const *s, char c)
 	boool = 1;
 	ptr = (char **)malloc(ft_count_strings(s, c) * sizeof(char *));
 	if (!ptr)
-		return (NULL);
+		return (free_split(ptr));
 	while (s[++i])
 	{
 		if (s[i] != c)
@@ -89,7 +86,7 @@ static	char	**ft_split_beta(char const *s, char c)
 			boool = 1;
 	}
 	ptr[j] = NULL;
-	return (free_split(ptr));
+	return (ptr);
 }
 
 char	**ft_split(char const *s, char c)
