@@ -34,13 +34,19 @@ BOBJ = $(BSRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar -rc $(NAME) $(OBJ)
+	@ar -rc $(NAME) $(OBJ)
+	@echo "██╗     ██╗██████╗ ███████╗████████╗"
+	@echo "██║     ██║██╔══██╗██╔════╝╚══██╔══╝"
+	@echo "██║     ██║██████╔╝█████╗     ██║   "
+	@echo "██║     ██║██╔══██╗██╔══╝     ██║   "
+	@echo "███████╗██║██████╔╝██║        ██║   "
+	@echo "╚══════╝╚═╝╚═════╝ ╚═╝        ╚═╝   "
 
 bonus: all $(BOBJ)
 	ar -rc $(NAME) $(BOBJ)
 
 %.o: %.c $(HEADER)
-	$(CC) -c $(CFLAGS) $<
+	@$(CC) -c $(CFLAGS) $<
 
 clean:
 	rm -rf $(OBJ) $(BOBJ)
@@ -48,4 +54,4 @@ clean:
 fclean: clean
 	rm -rf $(NAME) $(BOBJ)
 
-re: fclean all
+re: fclean all 
