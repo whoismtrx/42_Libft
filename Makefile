@@ -6,52 +6,59 @@
 #    By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 00:32:57 by orekabe           #+#    #+#              #
-#    Updated: 2021/12/22 02:51:41 by orekabe          ###   ########.fr        #
+#    Updated: 2024/03/18 17:41:44 by orekabe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
+CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
 NAME = libft.a
 
-HEADER = libft.h
+HEADER = -I./includes
 
-SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c \
-	  ft_isprint.c ft_itoa.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c \
-	  ft_split.c ft_strchr.c ft_strdup.c ft_strlen.c ft_striteri.c ft_strjoin.c ft_strlcat.c \
-	  ft_strlcpy.c ft_substr.c ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_tolower.c \
-	  ft_toupper.c ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c ft_strmapi.c
+SRCD = ./sources
 
-BSRC = ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c \
-	   ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c ft_lstiter.c
+OBJD = ./objects
 
-OBJ = $(SRC:.c=.o)
+SRC = $(SRCD)/ft_atoi.c $(SRCD)/ft_bzero.c $(SRCD)/ft_calloc.c $(SRCD)/ft_isalnum.c $(SRCD)/ft_isalpha.c $(SRCD)/ft_isascii.c $(SRCD)/ft_isdigit.c \
+	  $(SRCD)/ft_isprint.c $(SRCD)/ft_itoa.c $(SRCD)/ft_memchr.c $(SRCD)/ft_memcmp.c $(SRCD)/ft_memcpy.c $(SRCD)/ft_memmove.c $(SRCD)/ft_memset.c \
+	  $(SRCD)/ft_split.c $(SRCD)/ft_strchr.c $(SRCD)/ft_strdup.c $(SRCD)/ft_strlen.c $(SRCD)/ft_striteri.c $(SRCD)/ft_strjoin.c $(SRCD)/ft_strlcat.c \
+	  $(SRCD)/ft_strlcpy.c $(SRCD)/ft_substr.c $(SRCD)/ft_strncmp.c $(SRCD)/ft_strnstr.c $(SRCD)/ft_strrchr.c $(SRCD)/ft_strtrim.c $(SRCD)/ft_tolower.c \
+	  $(SRCD)/ft_toupper.c $(SRCD)/ft_putchar_fd.c $(SRCD)/ft_putendl_fd.c $(SRCD)/ft_putnbr_fd.c $(SRCD)/ft_putstr_fd.c $(SRCD)/ft_strmapi.c
 
-BOBJ = $(BSRC:.c=.o)
+BSRC = $(SRCD)/ft_lstlast.c $(SRCD)/ft_lstmap.c $(SRCD)/ft_lstnew.c $(SRCD)/ft_lstsize.c \
+	   $(SRCD)/ft_lstadd_back.c $(SRCD)/ft_lstadd_front.c $(SRCD)/ft_lstclear.c $(SRCD)/ft_lstdelone.c $(SRCD)/ft_lstiter.c
+
+OBJ = $(addprefix $(OBJD)/, $(notdir $(SRC:.c=.o)))
+
+BOBJ = $(addprefix $(OBJD)/, $(notdir $(BSRC:.c=.o)))
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@ar -rc $(NAME) $(OBJ)
+	@ar -rc $(NAME) $^
 	@echo "██╗     ██╗██████╗ ███████╗████████╗"
 	@echo "██║     ██║██╔══██╗██╔════╝╚══██╔══╝"
 	@echo "██║     ██║██████╔╝█████╗     ██║   "
 	@echo "██║     ██║██╔══██╗██╔══╝     ██║   "
 	@echo "███████╗██║██████╔╝██║        ██║   "
 	@echo "╚══════╝╚═╝╚═════╝ ╚═╝        ╚═╝   "
+	@echo "                   BY: MTRX         "
 
 bonus: all $(BOBJ)
-	ar -rc $(NAME) $(BOBJ)
+	ar -rc $(NAME) $^
 
-%.o: %.c $(HEADER)
-	@$(CC) -c $(CFLAGS) $<
+$(OBJD)/%.o: $(SRCD)/%.c
+	@mkdir -p $(OBJD)
+	@printf "Compiling $<\r"
+	@$(CC) -c $(CFLAGS) $(HEADER) $< -o $@
 
 clean:
-	rm -rf $(OBJ) $(BOBJ)
+	rm -rf $(OBJD)
 
 fclean: clean
-	rm -rf $(NAME) $(BOBJ)
+	rm -f $(NAME)
 
-re: fclean all 
+re: fclean all
