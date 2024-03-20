@@ -91,7 +91,7 @@ cc example.c libft.a -o example
 As a student, you can use the following resources to help you understand the C Language and the project better:
 - `C Language`: this playlist on [C Language Tutorial](https://www.youtube.com/watch?v=si-KFFOW2gw&list=PLVlQHNRLflP8IGz6OXwlV_lgHgc72aXlh&index=3&ab_channel=NareshiTechnologies) will help you understand more than the basics of the C language.
 - `Pointers`: this video on [Pointers in C/C++](https://www.youtube.com/watch?v=zuegQmMdy8M&ab_channel=freeCodeCamp.org) from [freeCodeCamp](https://www.youtube.com/@freecodecamp) will help you understand pointers in C.
-- `Libc functions`: you can find more information about these functions in the `man` pages visit the [man7.org](https://man7.org/linux) or type on your terminal
+- `Libc functions`: you can find more information about these functions in the `man` pages visit the [man7.org](https://man7.org/linux/man-pages/man7/man.7.html) or type on your terminal
 	```
 	man strlen
 	or
