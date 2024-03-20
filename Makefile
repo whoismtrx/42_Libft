@@ -16,11 +16,11 @@ CFLAGS = -Wall -Wextra -Werror
 
 NAME = libft.a
 
-HEADER = -I./includes
+HEADER = -I./include
 
-SRCD = ./sources
+SRCD = ./src
 
-OBJD = ./objects
+OBJD = ./objs
 
 SRC = $(SRCD)/ft_atoi.c $(SRCD)/ft_bzero.c $(SRCD)/ft_calloc.c $(SRCD)/ft_isalnum.c $(SRCD)/ft_isalpha.c $(SRCD)/ft_isascii.c $(SRCD)/ft_isdigit.c \
 	  $(SRCD)/ft_isprint.c $(SRCD)/ft_itoa.c $(SRCD)/ft_memchr.c $(SRCD)/ft_memcmp.c $(SRCD)/ft_memcpy.c $(SRCD)/ft_memmove.c $(SRCD)/ft_memset.c \
