@@ -1,5 +1,7 @@
 # Libft
 
+![](https://github.com/whoismtrx/42_Libft/blob/main/Libft.gif)
+
 ## Overview
 
 This project remakes some usual C language functions and adds a few new ones that will help students. The main goal is to make a set of functions that can be used again in later work, so students don't have to write them from scratch each time. This set of functions will be needed for most projects at 42. the project is a great opportunity to improve your skills in C programming and to learn about the structure of a library.
