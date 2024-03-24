@@ -39,6 +39,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@ar -rc $(NAME) $^
+	@printf "                                               \r"
 	@echo "██╗     ██╗██████╗ ███████╗████████╗"
 	@echo "██║     ██║██╔══██╗██╔════╝╚══██╔══╝"
 	@echo "██║     ██║██████╔╝█████╗     ██║   "
@@ -52,6 +53,7 @@ bonus: all $(BOBJ)
 
 $(OBJD)/%.o: $(SRCD)/%.c
 	@mkdir -p $(OBJD)
+	@printf "                                               \r"
 	@printf "Compiling $<\r"
 	@$(CC) -c $(CFLAGS) $(HEADER) $< -o $@
 
