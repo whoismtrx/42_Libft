@@ -86,6 +86,18 @@ cc example.c libft.a -o example
 - [ft_lstiter](https://github.com/whoismtrx/42_Libft/blob/main/sources/ft_lstiter.c): applies a function to each element of a linked list.
 - [ft_lstmap](https://github.com/whoismtrx/42_Libft/blob/main/sources/ft_lstmap.c): applies a function to each element of a linked list to create a new list.
 
+## Project Structure
+
+```
+libft/
+├── include/
+│   └── libft.h
+├── src/
+│   ├── ft_*.c (all function implementations)
+├── Makefile
+└── README.md
+```
+
 ## Resources
 
 As a student, you can use the following resources to help you understand the C Language and the project better:
@@ -99,3 +111,7 @@ As a student, you can use the following resources to help you understand the C L
 	```
 - `Linked Lists`: this video on [Linked Lists Introduction](https://www.youtube.com/watch?v=-Yn5DU0_-lw&list=PLDV1Zeh2NRsB6SWUrDFW2RmDotAfPbeHu&index=6) from [WilliamFiset](https://www.youtube.com/@WilliamFiset-videos) will help you understand them and how to manipulate them. if you want to learn more about [Doubly Linked lists](https://www.youtube.com/watch?v=m-8ZBO2ywaU&list=PLDV1Zeh2NRsB6SWUrDFW2RmDotAfPbeHu&index=7), you can see the part two.
 - `Makefile`: look at [EASY MAKEFILES](https://pulgamecanica.herokuapp.com/posts/makefiles)
+
+## Disclaimer
+
+This repository is for educational purposes only, documenting my work on the 42 curriculum. These solutions are intended as a reference for students who have already completed or are actively working on the project.
