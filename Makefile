@@ -6,7 +6,7 @@
 #    By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 00:32:57 by orekabe           #+#    #+#              #
-#    Updated: 2024/03/18 17:41:44 by orekabe          ###   ########.fr        #
+#    Updated: 2025/12/12 05:40:12 by orekabe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,24 +38,14 @@ BOBJ = $(addprefix $(OBJD)/, $(notdir $(BSRC:.c=.o)))
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@ar -rc $(NAME) $^
-	@printf "                                               \r"
-	@echo "██╗     ██╗██████╗ ███████╗████████╗"
-	@echo "██║     ██║██╔══██╗██╔════╝╚══██╔══╝"
-	@echo "██║     ██║██████╔╝█████╗     ██║   "
-	@echo "██║     ██║██╔══██╗██╔══╝     ██║   "
-	@echo "███████╗██║██████╔╝██║        ██║   "
-	@echo "╚══════╝╚═╝╚═════╝ ╚═╝        ╚═╝   "
-	@echo "                   BY: MTRX         "
+	ar -rc $(NAME) $(OBJ)
 
 bonus: all $(BOBJ)
-	ar -rc $(NAME) $^
+	ar -rc $(NAME) $(BOBJ)
 
 $(OBJD)/%.o: $(SRCD)/%.c
-	@mkdir -p $(OBJD)
-	@printf "                                               \r"
-	@printf "Compiling $<\r"
-	@$(CC) -c $(CFLAGS) $(HEADER) $< -o $@
+	mkdir -p $(OBJD)
+	$(CC) -c $(CFLAGS) $(HEADER) $< -o $@
 
 clean:
 	rm -rf $(OBJD)
